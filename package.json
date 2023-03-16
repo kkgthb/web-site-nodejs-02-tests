@@ -1,0 +1,26 @@
+{
+  "scripts": {
+    "build": "npm run donodemodulesstuff && npm run copyfilestodist && npm run removetemp",
+    "donodemodulesstuff": "npm run copypackagejsontotemp && npm run installproductionnodemodules",
+    "copypackagejsontotemp": "shx mkdir -p ./temp && shx cp ./package.json ./temp/package.json",
+    "installproductionnodemodules": "cd ./temp && npm install --production",
+    "copyfilestodist": "shx cp -r ./src/web/ ./dist && shx cp -r ./temp/node_modules/ ./dist/node_modules/ && shx rm -rf ./dist/web",
+    "removetemp": "shx rm -rf ./temp",
+    "test": "cross-env NODE_ENV=test jest --testTimeout=10000 --detectOpenHandles"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
+  "dependencies": {
+    "express": "latest"
+  },
+  "devDependencies": {
+    "cross-env": "latest",
+    "jest": "latest",
+    "shx": "latest",
+    "supertest": "latest"
+  }
+}
