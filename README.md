@@ -1,3 +1,9 @@
+# A tiny _testable_ Node.js website
+
+(Accompanies associated blog post on Katie Kodes "[Locally unit-testing source code for a Node.js Hello World webapp](https://katiekodes.com/node-unit-test-jest/)".)
+
+---
+
 ## Prerequisites
 
 1. Please work your way through my entire exercise "[Source code that builds locally into a Node.js Hello World webapp](https://katiekodes.com/node-hello-world/)" before beginning this exercise so that you're familiar with "building" and "running" a webserver _(although in this case, we won't do either of those things -- instead we'll be "testing" it)_ from source code.
@@ -127,3 +133,21 @@ P.S.  If leaving a failing test lying around is really bothering you, feel free 
 2. Engage in some "[test-driven-development](https://en.wikipedia.org/wiki/Test-driven_development)" _("TDD")_ by updating line 6 of `/src/web/server.js` from "`World`" to "`Goodbye`."
 
 Then run `npm run test` one more time to set your heart at ease.
+
+---
+
+## Extra credit -- build and run
+
+You're not _forbidden_ from building and running this server just because it's not the focus of this exercise.
+
+Go ahead -- try `npm run build` and then `node ./dist/server.js` against this codebase just like you did against the last one.
+
+In fact, try it with the server saying "`World`" and the test expecting "`Goodbye`."
+
+Did you notice that nothing at all goes wrong with the build process or with visiting your website on `localhost`?
+
+_(Although when you visit it, it will say "`World`," not "`Goodbye`" -- remember, that's what you told the server to do.)_
+
+By **deliberately** running `npm run build` and `node ./dist/server.js` even when you _knew_ that `npm run test` would be angry with you, you've arguably "built" a runtime out of "bad code" and chosen to run "bad code" on a webserver.
+
+Luckily, you've only done so on your local machine, but as we work our way through this series, we'll make sure to build codebases and habits that prevent us from running `npm run build` if `npm run test` failed.
